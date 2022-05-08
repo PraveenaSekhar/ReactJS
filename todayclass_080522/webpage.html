@@ -1,0 +1,54 @@
+<style>
+    body{
+        margin:0
+    }
+    div:first-child{
+        color: red;
+    font-size: 55px;
+    text-align: center;
+    background: yellow;
+    font-weight: bold;
+    }
+    div:nth-child(2){
+
+        text-align: right;
+    background: yellowgreen;
+    line-height: 30px;
+    color: white;
+    position: sticky;
+    top: 0;
+
+    }
+    div:nth-child(2) a{
+        font-size: 20px;
+    font-weight: bold;
+    margin-right: 15px;
+    letter-spacing: 4px;
+    font-style: italic;
+    text-decoration: underline;
+    }
+
+    div:nth-child(2)+div{
+        background: aliceblue;
+    height: 1000px;
+    }
+    div:last-of-type{
+        position: fixed;
+    bottom: 0;
+    background: yellow;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    }
+</style>
+
+<div>My Webpage</div>
+<div>
+    <a>Home</a>
+    <a>About</a>
+    <a>Contact</a>
+</div>
+
+<div>Content</div>
+<div>&copy; rights belongs to me.</div>

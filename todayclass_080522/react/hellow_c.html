@@ -1,0 +1,32 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    //prepare the content
+    
+    /*
+     function App(){
+          var content= <h1>Hellow World</h1>
+          return content;
+     }
+    */
+     
+    //props,refs,context,updater,isReactComponent,setState,forceUpdate
+    class App extends React.Component{
+        
+        render(){
+            return <h1>Hellow Dhoni</h1>
+        }
+    }
+
+   
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

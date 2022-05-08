@@ -1,0 +1,233 @@
+70h
+
+HTML 2h
+
+ 1. inline elements , block elements
+ 2. input controls
+ 3. table, list
+ 4. attribute
+
+CSS 4h
+
+  1. How many ways we can apply styles using css ?
+  2. box model
+  3. selectors
+  4. positions
+  5. media queries
+  6. bootstrap
+
+JavaScript
+
+  1. How to get the reference ?
+  2. variable, functions, callback, higher order functions
+  3. call, apply, bind 
+  4. Array, String
+  5. JSON
+  6. storages(local, session, cookies)
+  7. promises
+  8. AJAX
+  9. Async and await
+  10. generator functions
+  11. Exception Handling
+  12. closure
+  13. arrow , spread operator
+  14. class, object, inheritance
+  15. Debouncing
+  16. settimeout, setinterval
+  17. moduels(imports and exports)
+
+React 
+  0. Why we go for React ? 
+
+  1. How to prepare the content by using react ?
+          components(functional, class, JSX)
+
+  2. How to handle the events in react ?
+ 
+  3. How to take the data from Inputcontrols(ref,createRef,onchange) ?
+
+  4. How to validate the data ?
+
+  5. How to handle AJAX(XMLHTTPRequest,fetch,axios)
+
+  6. create node application
+
+  7. Mongo DB 
+
+  8. lists and keys
+
+  9. Reusable components
+
+  10. Handle Routing in react (npm, create-react-app, create-react-components)
+
+  11. Higher Order components
+
+  12. communication b/w components
+
+  13. context 
+
+  14. Exception Handling
+
+  15. Life cycle methods 
+
+  16. var, let , const, this, this.state, this.props, this.refs
+
+  17. test cases
+
+  18. Material UI, bootstrap
+
+  19. GIT
+
+  20. build(webapck) and deploy application(Godaddy, AWS, Heroku)
+
+
+Redux 
+
+  1. How to implment Redux into react application? 
+          action,reducer, store 
+
+  2. Redux Saga, Redux logger 
+
+
+react hooks 
+
+   1. useState
+   2. useEffect
+   3. useRef
+   4. useMemo
+   5. useCallback
+   6. useContext
+   7. useReducer
+
+React Native 
+ 
+End to End flow 
+
+React+Redux+Hooks(client) + node(express)  + Mongo DB
+
+
+Videos(20days)
+
+Date:14-03-2022
+Link:https://vimeo.com/688287460
+Password:Re@(t#N@re$h
+
+Date:15-03-2022
+Link:https://vimeo.com/688287559
+Password:$r!Nu0/0N!t
+
+Date:16-03-2022
+Link:https://vimeo.com/688726343
+Password: Re@(t#N@re$h
+
+Date:17-03-2022
+Link:https://vimeo.com/689160128
+Password:$r!Nu0/0N!t
+
+Date:18-03-2022
+Link:https://vimeo.com/689570350
+Password:  Re@(t#N@re$h
+
+Date:21-03-2022
+Link:https://vimeo.com/690391859
+password:$r!Nu0/0N!t
+
+22-03-2022
+https://vimeo.com/690820431
+Re@(t#N@re$h
+
+23-03-2022
+https://vimeo.com/691706595
+$r!Nu0/0N!t
+
+25-03-2022
+https://vimeo.com/692127453
+Re@(t#N@r
+
+26-03-2022
+https://vimeo.com/692494837
+$r!Nu0/0N!t
+
+28-03-2022
+https://vimeo.com/692970025
+Re@(t#N@r
+
+29-03-2022
+https://vimeo.com/693401827
+$r!Nu0/0N!t
+
+31-03-2022
+https://vimeo.com/694290286
+Re@(t#N@r
+
+01-04-2022
+https://vimeo.com/694745553
+$r!Nu0/0N!t
+
+04-04-2022
+https://vimeo.com/695580893
+Re@(t#N@r
+
+05-04-2022
+https://vimeo.com/695988117
+$r!Nu0/0N!t
+
+07-04-2022
+https://vimeo.com/696824609
+Re@(t#N@r
+
+08-04-2022
+https://vimeo.com/697241511
+$r!Nu0/0N!t
+
+11-04-2022
+https://vimeo.com/698048772
+Re@(t#N@r
+
+12-04-2022
+https://vimeo.com/698458317
+$r!Nu0/0N!t
+
+14-04-2022
+https://vimeo.com/699313816
+Re@(t#N@r
+
+15-04-2022
+https://vimeo.com/699682828
+$r!Nu0/0N!t
+
+
+16-04-2022
+https://vimeo.com/699949237
+$r!Nu0/0N!t
+
+18-04-2022
+https://vimeo.com/700338764
+Re@(t#N@r
+
+19-04-2022
+https://vimeo.com/700677269
+$r!Nu0/0N!t
+
+20-04-2022
+https://vimeo.com/701105056
+Re@(t#N@r
+
+21-04-2022
+https://vimeo.com/701526026
+$r!Nu0/0N!t
+
+22-04-2022
+https://vimeo.com/701904968
+Re@(t#N@r
+
+25-04-2022
+https://vimeo.com/702710544
+$r!Nu0/0N!t
+
+26-04-2022
+https://vimeo.com/703129940
+Re@(t#N@r
+
+
+

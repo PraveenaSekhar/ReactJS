@@ -1,0 +1,17 @@
+<p>
+    Search : <input id="search-tb" onkeyup="fnGetProducts()" />
+</p>
+
+<script>
+    var tbRef=document.getElementById('search-tb')
+    var timeoutId;
+
+    function fnGetProducts(){
+        clearTimeout(timeoutId)
+        timeoutId=setTimeout(function(){
+            console.log('send a request to the server and get the items , search on ' +tbRef.value)
+        },1000)
+    }
+</script>
+
+

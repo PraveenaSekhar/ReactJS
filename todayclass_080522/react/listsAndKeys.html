@@ -1,0 +1,76 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+   
+    class App extends React.Component{
+        constructor(){
+            super();
+            this.players=['Sachin','Dhoni','Kohli','UV','Lara']
+            this.questions=[
+                {
+                qno: 1,
+                que:'Who is the PM of India ?',
+                options:['Modi','Sha','Rahul','Nona ofAve'],
+                type:'S',
+                ans:'A'
+                },
+                {
+                qno: 2,
+                que:'How to pass the data from parent componenet to child component?',
+                options:['context', 'callback','redux','none of the above'],
+                type:'M',
+                ans:'AC'
+                }
+                ]
+        }
+        render(){
+
+            return <div>
+                    
+                    <h1>Keep in side P</h1>
+                    {
+                        this.players.map((v,i)=>{
+                                return <p>{v}</p>
+                        })
+                    }
+
+                    <h1>Select</h1>
+                    <select>
+                        {
+                            this.players.map((v,i)=>{
+                                return <option key={i}>{v}</option>
+                            })
+                        }
+                    </select>
+                    <h1>Order List</h1>
+                    <ol>
+                       {
+                           this.players.map((v,i)=>{
+                            return <li key={i}>{v}</li>
+                           })
+                       }
+                    </ol>
+                    <h1>UnOrder List</h1>
+                    <ul>
+                       {
+                           this.players.map((v,i)=>{
+                            return <li key={i}>{v}</li>
+                           })
+                       }
+                    </ul>
+                </div>
+        }
+    }
+
+   
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

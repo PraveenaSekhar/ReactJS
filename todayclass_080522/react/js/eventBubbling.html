@@ -1,0 +1,28 @@
+<div id="div1" onclick="f1(event)">
+    <div id='div2' onclick="f2(event)">
+        <div id='div3' onclick="f3(event)">
+
+        </div>
+    </div>
+</div>
+<style>
+    div{
+        padding:40px;
+        border:1px solid red
+    }
+</style>
+<script>
+    function f1(eve){
+        alert('f1 called')
+        console.log('f1',eve.target)
+    }
+    function f2(eve){
+        alert('f2 called')
+        console.log('f2',eve.target)
+    }
+    function f3(eve){
+        alert('f3 called')
+        console.log('f3',eve.target)
+        eve.stopPropagation()
+    }
+</script>

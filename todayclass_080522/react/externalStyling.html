@@ -1,0 +1,186 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<style>
+  body{
+      margin:0
+  }
+  .header{
+    font-size: 55px;
+    text-align: center;
+    background: yellow;
+    font-weight: bold;
+  }
+  .footer{
+    position: fixed;
+    bottom: 0;
+    background: yellow;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .menu{
+    list-style-type: none;
+    margin: 0;
+    text-align: right;
+    background: #78786f;
+    line-height: 40px;
+  }
+  .mobile-menu{
+    list-style-type: none;
+    height: 200px;
+    width: 150px;
+    text-align: left;
+    position: absolute;
+    top: 50px;
+    transition: 1s left;
+    background: #78786f;
+  }
+  .menu > li{
+    color: white;
+    display: inline;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+  }
+  .mobile-menu > li{
+    color: white;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;    
+  }
+
+  .menu-active{
+    color: red !important;
+    font-size: 25 !important;
+    font-style: italic;
+  }
+  .mobile-menu-btn{
+      position: absolute;
+      right: 0;
+      top:60px
+  }
+
+</style>
+<script type="text/babel">
+      class Home extends React.Component{
+        render(){
+            return <h1>This is Home Component</h1>
+        }
+    }
+    class About extends React.Component{
+        render(){
+            return <h1>This is About Component</h1>
+        }
+    }
+    class Contact extends React.Component{
+        render(){
+            return <h1>This is Contact Component</h1>
+        }
+    }
+    class Service extends React.Component{
+        render(){
+            return <h1>This is Service Component</h1>
+        }
+    }
+    class Header extends React.Component{
+        render(){
+            return <div className='header'>My Static React App</div>
+        }
+    }
+    class Footer extends React.Component{
+        render(){
+            return <div className='footer'>&copy; rights belongs to me.</div>
+        }
+    }
+    class Menu extends React.Component{
+       
+        state={
+           menuItem:'H',
+           isMobileView:document.body.offsetWidth<600?true:false,
+           left:-190
+        }
+        constructor(){
+            super();
+            let timeoutId;
+            let _flag=true
+            window.addEventListener('resize',()=>{
+                if(_flag){
+                    this.fnResize();
+                    _flag=false
+                }
+                clearTimeout(timeoutId)
+                timeoutId=window.setTimeout(()=>{
+                    this.fnResize()
+                },200)
+            })
+        }
+        fnResize=()=>{
+            const width=document.body.offsetWidth;
+                let isMobileView=false
+                if(width < 600){
+                    isMobileView=true
+                }
+                this.setState({
+                    isMobileView
+                })
+                console.log('7 lines code')
+        }
+        fnMenuClick=(eve)=>{
+            debugger;
+            const {id,nodeName}=eve.target
+            eve.stopPropagation()
+            if(nodeName=='UL')return;
+            let menuItem=id
+            this.setState({
+                menuItem,
+                left:-190
+            })
+        }
+        fnMobileMenuBtnClick=()=>{
+              this.setState({
+                  left:this.state.left==0 ? -190: 0
+              })
+        }
+        render(){
+           const {menuItem,isMobileView,left}= this.state
+            return <div>
+                {isMobileView && <button onClick={this.fnMobileMenuBtnClick} className='mobile-menu-btn'>menu</button>}
+                <ul style={{left:left}} onClick={this.fnMenuClick} className={isMobileView ? 'mobile-menu':'menu'}>
+                   <li id='H' className={menuItem == 'H' && 'menu-active'}  >Home</li>
+                   <li id='A' className={menuItem == 'A' && 'menu-active'} >About</li>
+                   <li id='C' className={menuItem == 'C' && 'menu-active'} >Contact</li>
+                   <li id='S' className={menuItem == 'S' && 'menu-active'} >Service</li>
+                </ul>
+                {menuItem == 'H' && <Home /> }
+                {menuItem == 'A' && <About /> }
+                {menuItem == 'C' && <Contact /> }
+                {menuItem == 'S' && <Service /> }
+            </div>
+
+        }
+    }
+    class App extends React.Component{
+        render(){
+            return <div>
+                    <Header />
+                    <Menu />
+                    <Footer />
+                </div>
+        }
+    }
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

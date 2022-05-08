@@ -1,0 +1,47 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+   
+    class App extends React.Component{
+        state={
+            name:'Sachin'
+        }
+        constructor(){
+            super()
+            console.log('con exexted')
+            const _this=this;
+            setTimeout(function(){
+                this.setState({
+                    name:'Dhoni'
+                })
+            }.bind(this),2000)
+
+            setTimeout(()=>{
+                this.setState({
+                    name:'Kohli'
+                })
+            },4000)
+            setTimeout(()=>{
+                _this.setState({
+                    name:'UV'
+                })
+            },6000)
+        }
+        render(){
+            console.log('1lakh render called')
+            return <h1>Hellow {this.state.name}</h1>
+        }
+    }
+
+   
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

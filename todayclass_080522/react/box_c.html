@@ -1,0 +1,47 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+<style>
+    .box{
+        border: 1px solid red;
+        height: 100;
+        width: 100;
+        display: inline-block;
+        text-align: center;
+        line-height: 100px;
+    }
+</style>
+<div id="root"></div>
+
+<script type="text/babel">
+    //prepare the content
+
+  
+
+     class Box extends React.Component{
+         render(){
+            return <div className='box'>{this.props.no}</div>
+         }
+     }
+
+     class App extends React.Component{
+          render(){
+            return <div>
+                <div>
+                    <Box no='1' /><Box no='2' />
+                </div>
+                <div>
+                    <Box no='3' /><Box no='4' />
+                </div>
+            </div>
+          }
+     }
+
+    
+    
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App></App>)
+</script>
+

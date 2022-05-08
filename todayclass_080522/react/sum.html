@@ -1,0 +1,48 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    //prepare the content
+
+     function App(){
+         var n1Ref=React.useRef();
+         var n2Ref=React.useRef();
+         //var result=0
+         const [result,setResult]=React.useState(0)
+         const [clr,setClr]=React.useState('green')
+         //var clr='green'
+         function findSum(){
+            var n1=n1Ref.current.value
+            var n2=n2Ref.current.value
+            var sum=Number(n1)+parseInt(n2)
+            var _clr='red'
+            if(sum<100){
+               _clr='blue'
+            }
+            setClr(_clr)
+            setResult(sum)
+         }
+
+         return <div>
+              <p>
+                 <b>No1:</b><input ref={n1Ref} />
+              </p>
+              <p>
+                 <b>No2:</b><input ref={n2Ref} />
+              </p>
+              <p>
+                <button onClick={findSum}>Sum</button>
+              </p>
+              <h1 style={{color:clr }} >{result}</h1>
+            </div>
+     }
+    
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App></App>)
+</script>
+

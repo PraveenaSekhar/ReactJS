@@ -1,0 +1,63 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class B extends React.Component{
+        render(){
+            return <div>
+                    <h1>B:{this.props.name}</h1>
+                </div>
+        }
+    }
+
+    class A extends React.Component{
+        nameRef=React.createRef()
+        fnClick(){
+           var name= this.nameRef.current.value;
+           this.props.f(name)
+        }
+        render(){
+           
+            return <div>
+                   <h1>A</h1>
+                   <p>
+                     Name:<input ref={this.nameRef}/>
+                    </p>
+                    <p>
+                        <button onClick={this.fnClick.bind(this)}>Submit</button>
+                    </p>
+                </div>
+        }
+    }
+    
+
+    class App extends React.Component{
+        state={
+            result:'Not Yet Received'
+        }
+       
+        fnGetData(name){
+           this.setState({
+            result:name
+        })
+        }
+        render(){
+            return <div>
+                    <h1>App</h1>
+                    <A f={this.fnGetData.bind(this)} />
+                    <B name={this.state.result} />
+                </div>
+        }
+
+    }
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

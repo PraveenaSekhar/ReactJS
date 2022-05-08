@@ -1,0 +1,38 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class A extends React.Component{
+        amount=1000
+        render(){
+            this.props.x(this.amount)
+            return <div>
+                   <h1>A</h1>
+                </div>
+        }
+    }
+    
+
+    class App extends React.Component{
+        f(amt){
+            alert('Parent '+amt)
+        }
+        render(){
+            return <div>
+                    <h1>App</h1>
+                    <A x={this.f} />
+                </div>
+        }
+
+    }
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

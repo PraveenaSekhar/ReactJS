@@ -1,0 +1,96 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+   
+    class App extends React.Component{
+        constructor(){
+            super();
+            this.questions=[
+            
+                {
+                qno: 1,
+                que:'Who is the PM of India ?',
+                options:['Modi','Sha','Rahul','Nona ofAve'],
+                type:'S',
+                ans:'A'
+                },
+                {
+                qno: 2,
+                que:'How to pass the data from parent componenet to child component?',
+                options:['context', 'callback','redux','none of the above'],
+                type:'M',
+                ans:'AC'
+                },
+                {
+                qno: 3,
+                que:'is React is lib ?',
+                options:['Yes', 'No'],
+                type:'S',
+                ans:'A'
+                },
+                ]
+                this.fnSubmit=this.fnSubmit.bind(this)
+                this.selectedAns={}
+        }
+
+        fnSubmit(){
+            console.log(this.selectedAns)
+        }
+        fnChange=(eve)=>{
+            const {name,value,type,checked}=eve.target;
+            if(type=='checkbox'){
+               let selChkValues= this.selectedAns[name]
+               if(selChkValues){
+                    let selChkValuesArr=selChkValues.split('');
+                    if(checked){
+                        selChkValuesArr.push(value)
+                    }else{
+                        let unChkIndex=selChkValuesArr.indexOf(value)
+                        selChkValuesArr.splice(unChkIndex,1)
+                    }
+                    this.selectedAns[name]=selChkValuesArr.sort().join('')
+               }else{
+                  this.selectedAns[name]=value
+               }
+            }else{
+                this.selectedAns[name]=value
+            }
+           
+        }
+        render(){
+            let ansArr=['A','B','C','D']
+            return <div>
+                    
+                    <h1>Question Paper</h1>
+                    {
+                        this.questions.map((obj,index)=>{
+                            const {qno,que,options,type} =obj
+                            return <div>
+                                    <h3>{qno}.{que}</h3>
+                                    {
+                                      options.map((v,i)=>{
+                                           return <p>{type== 'S' ? <input value={ansArr[i]} onChange={this.fnChange} name={qno} type='radio' /> :<input name={qno} value={ansArr[i]} onChange={this.fnChange} type='checkbox' />}  {v}</p>
+                                      })  
+                                    }
+                                </div>
+                        })
+                    }
+
+                    <button onClick={this.fnSubmit}>submit</button>
+
+                </div>
+        }
+    }
+
+   
+
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App />)
+</script>
+

@@ -1,0 +1,55 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    //prepare the content
+     class App extends React.Component{
+         n1Ref=React.createRef()
+         n2Ref=React.createRef()
+         //result='No Result Found'
+         state={
+            result:'No Result Found',
+            clr:'green'
+         }
+        
+         fnClick(){
+            debugger;
+            var n1=this.n1Ref.current.value;
+            var n2=this.n2Ref.current.value;
+            var sum=Number(n1)+parseInt(n2)
+            //this.result=sum;
+            //this.state.result=sum; don't use this syntax
+             
+            this.setState({
+            result:sum,
+            clr: sum > 100 ? 'red' : 'blue'
+           })
+           console.log('fnClick',this.state)
+         }
+         render(){
+            console.log('render',this)
+            return <div>
+              <p>
+                 <b>No1:</b><input ref={this.n1Ref} />
+              </p>
+              <p>
+                 <b>No2:</b><input ref={this.n2Ref} />
+              </p>
+              <p>
+                <button onClick={this.fnClick.bind(this)} >Sum</button>
+              </p>
+              <h1 style={{color:this.state.clr}}>{this.state.result}</h1>
+            </div>
+         }
+     }
+   
+    
+    //get container
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    // render content inside container
+    root.render(<App></App>)
+</script>
+

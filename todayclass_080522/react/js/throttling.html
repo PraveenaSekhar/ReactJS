@@ -1,0 +1,21 @@
+
+<script>
+  let timeOutId;
+  let _flag=true
+  window.addEventListener('resize',function(){
+      if(_flag){
+        fnResize()
+        _flag=false
+      }
+      clearTimeout(timeOutId)
+      timeOutId=setTimeout(function(){
+        fnResize()
+      },2000)
+      
+      
+  })
+
+  function fnResize(){
+    console.log('500 lines code')
+  }
+</script>

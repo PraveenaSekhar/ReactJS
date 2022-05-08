@@ -1,0 +1,33 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+
+<script type="text/babel">
+
+  
+   class Player extends React.Component{
+       render(){
+            debugger
+            return <h1>Hi..This is {this.props.name}, I am from {this.props['children']}</h1>
+       }
+   }
+  
+   
+   class App extends React.Component{
+       render(){
+                return <div>
+                        <Player  name='Sachin'>Mumbai</Player>
+                        <Player  name='Dhoni'>Ranchi</Player>
+                        <Player  name='Kohli'>Delhi</Player>
+                    </div>
+       }
+   }
+  
+
+    var root=ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<App />)
+
+</script>
