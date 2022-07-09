@@ -4,98 +4,108 @@ import './style.css';
 const Regex = RegExp(/^\s?[A-Z0–9]+[A-Z0–9._+-]{0,}@[A-Z0–9._+-]+\.[A-Z0–9]{2,4}\s?$/i);
 
 interface SignUpProps {
-    name?: any;
-    value?: any;
- }
+   name?: any;
+   value?: any;
+}
 interface SignUpState {
-    username : string,
-    email : string,
-    password : string,
-    errors : {
-       username :  string,
-       email : string,
-       password : string
-    }
- }
+   username: string,
+   email: string,
+   password: string,
+   errorName: string,
+   errorEmail: string,
+   errorPassword: string
+}
 
-export class SignUp extends React.Component<SignUpProps,SignUpState>
+export class SignUp extends React.Component<SignUpProps, SignUpState>
 {
-    constructor(props: SignUpProps) {
-        super(props);
-        const initialState = {
-            username : '',
-            email : '',
-            password : '',
-            errors : {
-              username : '',
-              email : '',
-              password : ''
-            } 
-          }
-          this.state = initialState;
-          this.handleChange = this.handleChange.bind(this);
-    }       
+   constructor(props: SignUpProps) {
+      super(props);
+      const initialState = {
+         username: '',
+         email: '',
+         password: '',
+         errorName:"",
+         errorEmail: "",
+         errorPassword: ""        
+      }
+      this.state = initialState;
+      this.userNameChange = this.userNameChange.bind(this);
+      this.emailChange = this.emailChange.bind(this);
+      this.passwordChange = this.passwordChange.bind(this);
 
-    handleChange = (event: any) => {
-        event.preventDefault();
-        const { name, value } = event.target;
-        let errors = this.state.errors;
-        switch (name) {
-        case 'username':
-        errors.username = value.length < 5 ? 'Username must be 5 characters long!': '';
-        break;
-        case 'email':
-        errors.email = Regex.test(value)? '': 'Email is not valid!';
-        break;
-        case 'password':
-        errors.password = value.length < 8 ? 'Password must be eight characters long!': '';
-        break;
-        default:
-        break;
-    }
-    }
-    handleSubmit = (event: any) => {
-        event.preventDefault();
-        let validity = true;
-        Object.values(this.state.errors).forEach(
-        (val) => val.length > 0 && (validity = false)
-        );
-        if(validity === true){
-        console.log("Registering can be done");
-        }else{
-      console.log("You cannot be registered!!!")
-        }
-    }
+   }
 
-    render() {
-        const {errors} = this.state
-        return (
-          <div className='wrapper'>
+   userNameChange = (e: any) => {
+      this.setState({ username: e.target.value });
+      console.log("UserName==>" + e.target.value);
+   }
+
+   emailChange = (e: any) => {
+      this.setState({ email: e.target.value });
+      console.log("Email==>" + e.target.value);
+   }
+
+   passwordChange = (e: any) => {
+      this.setState({ password: e.target.value });
+      console.log("Password==>" + e.target.value);
+   }
+
+   clearErrmsg=()=>{
+      this.setState({ errorName: "" });
+      this.setState({ errorEmail: "" });
+      this.setState({ errorPassword: "" });
+   }
+
+   handleSubmit = (event: any) => {
+      event.preventDefault();
+    const {username,email,password}=this.state;
+    console.log("username =====>"+username);
+
+      if (username === "") {
+         this.setState({ errorName: "Please Enter Name" });
+      } 
+      if (email === "") {
+         this.setState({ errorEmail: "Please Enter Email" });
+      } 
+      if (password === "") {
+         this.setState({ errorPassword: "Please Enter password" });
+      } 
+   }
+
+   render() {
+      const {errorName,errorEmail,errorPassword}=this.state;
+      return (
+         <div className='wrapper'>
             <div className='form-wrapper'>
                <h2>Sign Up</h2>
-               <form onSubmit={this.handleSubmit} noValidate >
+               <form>
                   <div className='fullName'>
                      <label htmlFor="fullName">Full Name</label>
-                     <input type='text' name='fullName' onChange={this.handleChange}/>
-                     {errors.username.length > 0 &&  <span style={{color: "red"}}>{errors.username}</span>}
+                     <input type='text' name='fullName' 
+                     onKeyUpCapture={this.clearErrmsg}
+                     onChange={this.userNameChange} />
                   </div>
+                  <span style={{ color: "red" }}>{errorName}</span>
                   <div className='email'>
                      <label htmlFor="email">Email</label>
-                     <input type='email' name='email' onChange={this.handleChange}/>
-                     {errors.email.length > 0 &&  <span style={{color: "red"}}>{errors.email}</span>}
+                     <input type='email' name='email' onChange={this.emailChange}
+                     onKeyUpCapture={this.clearErrmsg} />
                   </div>
+                  <span style={{ color: "red" }}>{errorEmail}</span>
                   <div className='password'>
                      <label htmlFor="password">Password</label>
-                     <input type='password' name='password' onChange={this.handleChange}/>
-                     {errors.password.length > 0 &&  <span style={{color: "red"}}>{errors.password}</span>}
-                  </div>              
-                  <div className='submit'>
-                     <button>Register Me</button>
+                     <input type='password' name='password' 
+                     onChange={this.passwordChange} 
+                     onKeyUpCapture={this.clearErrmsg}/>
                   </div>
-             </form>
+                  <span style={{ color: "red" }}>{errorPassword}</span>
+                  <div className='submit'>
+                     <button onClick={this.handleSubmit}>Register Me</button>
+                  </div>
+               </form>
+            </div>
          </div>
-      </div>
-     );
-    }
+      );
+   }
 }
 
